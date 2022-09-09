@@ -3,6 +3,7 @@ import userRegister from './controllers/user/register';
 import userLogin from './controllers/user/login';
 import getServices from './controllers/service/get-services';
 import getService from './controllers/service/get-service';
+import authenticateToken from './middlewares/authenticate-token';
 
 const router = Router();
 

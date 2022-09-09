@@ -3,13 +3,12 @@ import { sign } from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import { AppDataSource } from '../data-source';
 import { RefreshToken } from '../entities/refresh-token.entity';
+import { IJWTPayload } from '../types/interfaces/common.interface';
 
 export default async (userId: number) => {
     const refreshToken = uuidv4();
-    const token = sign({
-        userId,
-        refreshToken,
-    }, JWT_SECRET_KEY);
+    const jwtPayload: IJWTPayload = { userId, refreshToken };
+    const token = sign(jwtPayload, JWT_SECRET_KEY);
 
     const refreshTokenRepo = AppDataSource.getRepository(RefreshToken);
     await refreshTokenRepo.save({
