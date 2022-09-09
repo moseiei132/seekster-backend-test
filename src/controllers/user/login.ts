@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { AppDataSource } from '../../data-source';
-import { User } from '../../entity/user.entity';
-import { ILogin } from '../../type/interface/user.interface';
+import { User } from '../../entities/user.entity';
+import { ILogin } from '../../types/interfaces/user.interface';
 import * as bcrypt from 'bcrypt';
 
 export default async (req: Request, res: Response) => {
