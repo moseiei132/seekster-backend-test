@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt';
 import { IUser } from '../../types/interfaces/user.interface';
 import { User } from '../../entities/user.entity';
 import { AppDataSource } from '../../data-source';
+import generateToken from '../../utils/generate-token';
 
 export default async (req: Request, res: Response) => {
     const { fullName, username, password }: IUser = req.body;
@@ -14,13 +15,16 @@ export default async (req: Request, res: Response) => {
     });
 
     const hashedPassword: string = await bcrypt.hash(password, 10);
-    await userRepo.save({
+    const createdUser = await userRepo.save({
         fullName,
         username,
         password: hashedPassword,
     });
 
-    res.send({
+    const accessToken = await generateToken(createdUser._id);
+
+    return res.send({
         message: 'User registered successfully',
+        accessToken,
     });
 }

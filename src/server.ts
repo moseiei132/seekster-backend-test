@@ -21,6 +21,7 @@ app.listen(PORT, HOST, async () => {
             message: 'Error while initializing database',
             error,
         }));
+        process.exit(1);
     }
 
     console.log(`Server is running on http://${HOST}:${PORT}`);
