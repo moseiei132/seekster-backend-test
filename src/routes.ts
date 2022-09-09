@@ -2,6 +2,7 @@ import { Request, Response, Router } from 'express';
 import userRegister from './controllers/user/register';
 import userLogin from './controllers/user/login';
 import getServices from './controllers/service/get-services';
+import getService from './controllers/service/get-service';
 
 const router = Router();
 
@@ -11,5 +12,6 @@ router.post('/v1/auth/register', userRegister);
 router.post('/v1/auth/signin', userLogin);
 
 router.get('/v1/services', getServices);
+router.get('/v1/services/:serviceId', getService);
 
 export default router;
