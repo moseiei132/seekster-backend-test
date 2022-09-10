@@ -5,6 +5,7 @@ import { EXPRESS_CONFIG } from './config/env';
 import routes from './routes';
 import { AppDataSource } from './data-source';
 import cors from 'cors';
+import { errorMessage } from './constants/message';
 
 const { HOST, PORT } = EXPRESS_CONFIG;
 
@@ -20,7 +21,7 @@ app.listen(PORT, HOST, async () => {
     } catch (error) {
         console.log(JSON.stringify({
             from: 'app.listen',
-            message: 'Error while initializing database',
+            message: errorMessage.DATABASE_INITIALIZING_ERROR,
             error,
         }));
         process.exit(1);
