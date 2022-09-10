@@ -6,7 +6,7 @@ export const loginValidator = [
 ];
 
 export const registerValidator = [
-    body('fullName').exists().isString().isLength({ min: 3, max: 20 }),
+    body('fullName').exists().isString().isLength({ min: 3, max: 255 }),
     body('username').exists().isString().isLength({ min: 3, max: 20 }),
     body('password').exists().isString().isLength({ min: 6, max: 20 }),
 ];
