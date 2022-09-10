@@ -17,6 +17,7 @@ export default async (req: Request, res: Response) => {
     const booking = await bookingRepo.save({
         serviceId,
         userId,
+        createdAt: new Date(),
     });
 
     return res.send({
