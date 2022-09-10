@@ -1,4 +1,4 @@
 export interface IJWTPayload {
-    userId: number
+    userId: string
     refreshToken: string
 }

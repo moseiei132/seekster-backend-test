@@ -1,12 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, PrimaryColumn } from 'typeorm';
 
 @Entity('refresh_tokens')
 export class RefreshToken {
-    @PrimaryGeneratedColumn({ name: 'id' })
-    _id: number;
+    @PrimaryColumn({ name: 'id' })
+    @Generated('uuid')
+    _id: string;
 
     @Column({ name: 'user_id' })
-    userId: number;
+    userId: string;
 
     @Column({ name: 'token' })
     token: string;

@@ -1,9 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, Column, Generated, PrimaryColumn } from "typeorm"
 
 @Entity('users')
 export class User {
-    @PrimaryGeneratedColumn({ name: 'id' })
-    _id: number
+    @PrimaryColumn({ name: 'id' })
+    @Generated('uuid')
+    _id: string
 
     @Column({ name: 'full_name' })
     fullName: string
@@ -13,11 +14,4 @@ export class User {
 
     @Column()
     password: string
-
-    @Column({ name: 'created_at', default: () => 'CURRENT_TIMESTAMP' })
-    createdAt: Date
-
-    @Column({ name: 'updated_at', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
-    updatedAt: Date
-
 }

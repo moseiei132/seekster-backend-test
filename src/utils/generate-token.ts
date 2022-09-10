@@ -5,7 +5,7 @@ import { AppDataSource } from '../data-source';
 import { RefreshToken } from '../entities/refresh-token.entity';
 import { IJWTPayload } from '../types/interfaces/common.interface';
 
-export default async (userId: number) => {
+export default async (userId: string) => {
     const refreshToken = uuidv4();
     const jwtPayload: IJWTPayload = { userId, refreshToken };
     const token = sign(jwtPayload, JWT_SECRET_KEY);

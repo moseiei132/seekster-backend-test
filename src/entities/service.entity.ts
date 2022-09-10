@@ -17,10 +17,4 @@ export class Service {
 
     @Column()
     description: string;
-
-    @Column({ name: 'created_at', default: () => 'CURRENT_TIMESTAMP' })
-    createdAt: Date;
-
-    @Column({ name: 'updated_at', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
-    updatedAt: Date;
 }
