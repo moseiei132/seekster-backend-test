@@ -14,5 +14,6 @@ export const AppDataSource = new DataSource({
     entities: ['src/entities/**/*.ts'],
     migrations: ['src/migrations/*.ts'],
     subscribers: [],
-    extra: { insecureAuth: true }
+    extra: { insecureAuth: true },
+    timezone: '+07:00',
 })
