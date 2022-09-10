@@ -5,6 +5,7 @@ import getServices from './controllers/service/get-services';
 import getService from './controllers/service/get-service';
 import authenticateToken from './middlewares/authenticate-token';
 import booking from './controllers/service/booking';
+import getOrders from './controllers/service/get-orders';
 
 const router = Router();
 
@@ -16,5 +17,6 @@ router.post('/v1/auth/signin', userLogin);
 router.get('/v1/services', getServices);
 router.get('/v1/services/:serviceId', getService);
 router.post('/v1/services/:serviceId/booking', authenticateToken, booking);
+router.get('/v1/orders', authenticateToken, getOrders);
 
 export default router;

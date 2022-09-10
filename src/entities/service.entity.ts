@@ -1,4 +1,5 @@
-import { Column, Entity, Generated, PrimaryColumn } from 'typeorm';
+import { Column, Entity, Generated, OneToMany, PrimaryColumn } from 'typeorm';
+import { ServiceBooking } from './service-booking.entity';
 
 @Entity('services')
 export class Service {
@@ -17,4 +18,7 @@ export class Service {
 
     @Column()
     description: string;
+
+    @OneToMany(() => ServiceBooking, (booking) => booking.service)
+    bookings?: ServiceBooking[];
 }
