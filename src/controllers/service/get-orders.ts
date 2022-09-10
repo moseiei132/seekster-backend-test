@@ -11,5 +11,11 @@ export default async (req: Request, res: Response) => {
         relations: ['service', 'customer'],
     });
 
+    bookings.forEach((booking) => {
+        delete booking.customer.password;
+        delete booking.userId;
+        delete booking.serviceId;
+    });
+
     return res.send(bookings);
 };
