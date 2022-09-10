@@ -4,12 +4,14 @@ import bodyParser from 'body-parser';
 import { EXPRESS_CONFIG } from './config/env';
 import routes from './routes';
 import { AppDataSource } from './data-source';
+import cors from 'cors';
 
 const { HOST, PORT } = EXPRESS_CONFIG;
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 app.use(routes);
 
 app.listen(PORT, HOST, async () => {
